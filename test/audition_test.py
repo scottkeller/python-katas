@@ -1,5 +1,10 @@
 import unittest
-from src.audition import it_runs
+import sys
+import os.path
+
+# Import application code here ...
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+from src.audition import it_runs  # noqa
 
 
 class TestMarkdownPy(unittest.TestCase):
