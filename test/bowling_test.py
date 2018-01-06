@@ -43,6 +43,10 @@ class TestBowling(unittest.TestCase):
         self.bowl_multi(1, 2)
         assert self.game.score() == 12
 
+    def test_perfect_game(self):
+        self.bowl_multi(10, 12)
+        assert self.game.score() == 300
+
     def bowl_multi(self, pins, throws):
         for n in range(throws):
             self.game.bowl(pins)
