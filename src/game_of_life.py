@@ -1,3 +1,11 @@
-class Game():
-    def __init__(self):
-        pass
+class Game(object):
+    def __init__(self, infile):
+        self.infile = infile
+
+
+
+
+
+
+
+
