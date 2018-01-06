@@ -1,3 +1,9 @@
 class Game():
     def __init__(self):
-        pass
+        self.throws = []
+
+    def bowl(self, pins):
+        return 0
+
+    def score(self):
+        return 0

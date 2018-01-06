@@ -9,8 +9,13 @@ from src.bowling import Game
 
 class TestBowling(unittest.TestCase):
 
-    def test_create_game(self):
-        game = Game()
+    def setUp(self):
+        self.game = Game()
+
+    def test_all_gutters(self):
+        for n in range(20):
+            self.game.bowl(0)
+        assert self.game.score() == 0
 
 
 if __name__ == '__main__':
