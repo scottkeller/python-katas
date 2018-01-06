@@ -37,6 +37,12 @@ class TestBowling(unittest.TestCase):
         self.bowl_multi(1, 1)
         assert self.game.score() == 11
 
+    def test_tenth_frame_strike(self):
+        self.bowl_multi(0, 18)
+        self.game.bowl(10)
+        self.bowl_multi(1, 2)
+        assert self.game.score() == 12
+
     def bowl_multi(self, pins, throws):
         for n in range(throws):
             self.game.bowl(pins)
