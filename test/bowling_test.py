@@ -13,14 +13,23 @@ class TestBowling(unittest.TestCase):
         self.game = Game()
 
     def test_all_gutters(self):
-        for n in range(20):
-            self.game.bowl(0)
+        self.bowl_multi(0, 20)
         assert self.game.score() == 0
 
     def test_all_ones(self):
-        for n in range(20):
-            self.game.bowl(1)
+        self.bowl_multi(1, 20)
         assert self.game.score() == 20
+
+    def test_first_spare(self):
+        self.game.bowl(1)
+        self.game.bowl(9)
+        self.bowl_multi(1, 18)
+        assert self.game.score() == 29
+
+    def bowl_multi(self, pins, throws):
+        for n in range(throws):
+            self.game.bowl(pins)
+
 
 
 if __name__ == '__main__':
