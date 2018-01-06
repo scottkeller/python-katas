@@ -3,7 +3,10 @@ class Game():
         self.throws = []
 
     def bowl(self, pins):
-        return 0
+        self.throws.append(pins)
 
     def score(self):
-        return 0
+        total = 0;
+        for n in self.throws:
+            total += n
+        return total

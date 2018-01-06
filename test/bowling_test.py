@@ -17,6 +17,11 @@ class TestBowling(unittest.TestCase):
             self.game.bowl(0)
         assert self.game.score() == 0
 
+    def test_all_ones(self):
+        for n in range(20):
+            self.game.bowl(1)
+        assert self.game.score() == 20
+
 
 if __name__ == '__main__':
     unittest.main()
