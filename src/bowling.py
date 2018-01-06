@@ -12,7 +12,10 @@ class Game():
         frames = 10
         frame_index = 0
         for n in range(frames):
-            if self.is_spare(frame_index):
+            if self.is_strike(frame_index):
+                total += self.score_strike(frame_index)
+                frame_index += 1
+            elif self.is_spare(frame_index):
                 total += self.score_spare(frame_index)
                 frame_index += 2
             else:
@@ -22,6 +25,12 @@ class Game():
 
     def is_spare(self, frame_index):
         return self.throws[frame_index] + self.throws[frame_index + 1] == 10
+
+    def is_strike(self, frame_index):
+        return self.throws[frame_index] == 10
+
+    def score_strike(self, frame_index):
+        return 10 + self.throws[frame_index + 1] + self.throws[frame_index + 2]
 
     def score_frame(self, frame_index):
         return self.throws[frame_index] + self.throws[frame_index + 1]

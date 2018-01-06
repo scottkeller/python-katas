@@ -26,11 +26,15 @@ class TestBowling(unittest.TestCase):
         self.bowl_multi(1, 18)
         assert self.game.score() == 29
 
+    def test_first_strike(self):
+        self.game.bowl(10)
+        self.bowl_multi(2, 18)
+        print self.game.score()
+        assert self.game.score() == 50
+
     def bowl_multi(self, pins, throws):
         for n in range(throws):
             self.game.bowl(pins)
-
-
 
 if __name__ == '__main__':
     unittest.main()
