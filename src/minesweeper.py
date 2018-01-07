@@ -10,6 +10,7 @@ class Game(object):
         self.infile = infile
         self.raw_input = file_helper(self.infile)
         self.grid = create_grid(self.raw_input)
+        self.mines = find_mines(self.grid)
 
 
 def file_helper(infile):
@@ -38,3 +39,8 @@ def create_grid(lines):
         x, y, v = c
         grid.add((x, y, v))
     return grid
+
+
+def find_mines(grid):
+    """finds the x,y coordinates of mines in the grid"""
+    return [(x[0], x[1]) for x in grid if x[2] == '*']

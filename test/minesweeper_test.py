@@ -23,5 +23,10 @@ class TestMinesweeper(unittest.TestCase):
         game = Game(infile)
         assert game.grid == set([(0, 0, ".")])
 
+    def test_mines(self):
+        infile = os.path.abspath('./minesweeper_test_input/one_mine.txt')
+        game = Game(infile)
+        assert game.mines == [(0, 0)]
+
 if __name__ == '__main__':
     unittest.main()
