@@ -21,8 +21,12 @@ class TestGameOfLife(unittest.TestCase):
     def test_grid_creation(self):
         infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
         game = Game(infile)
-        print game.grid
         assert game.grid == set([(0, 0, '*')])
+
+    def test_live_cells(self):
+        infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
+        game = Game(infile)
+        assert game.live_cells == [(0, 0)]
 
     ##def test_cell_state(self):
 
