@@ -21,8 +21,8 @@ class TestGameOfLife(unittest.TestCase):
     def test_grid_creation(self):
         infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
         game = Game(infile)
-        assert game.grid == set()
-
+        print game.grid
+        assert game.grid == [[0, 0]]
 
 
 if __name__ == '__main__':
