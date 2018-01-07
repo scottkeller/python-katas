@@ -13,19 +13,22 @@ def file_helper(infile):
 
 
 def parse_lines(lines):
-    x = 0
     y = 0
     for l in lines:
-        for c in l:
-            yield [x, y]
-            x += 1
+        x = 0
+        l = l.strip()
+        for v in l:
+            yield x, y, v
+            x +=1
         y += 1
 
 
+
 def create_grid(lines):
-    grid = []
+    grid = set()
     for c in parse_lines(lines):
-        grid.append(c)
+        x, y, v = c
+        grid.add((x, y, v))
     return grid
 
 

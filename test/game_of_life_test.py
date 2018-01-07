@@ -22,7 +22,10 @@ class TestGameOfLife(unittest.TestCase):
         infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
         game = Game(infile)
         print game.grid
-        assert game.grid == [[0, 0]]
+        assert game.grid == set([(0, 0, '*')])
+
+    ##def test_cell_state(self):
+
 
 
 if __name__ == '__main__':
