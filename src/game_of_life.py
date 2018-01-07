@@ -9,13 +9,16 @@ class Game(object):
         new_grid = set()
         for cell in self.grid:
             x, y, v = cell
-            live_neighbors = list(set(self.live_cells) - set(cell_neighbors((x, y))))
+            live_neighbors = list((set(self.live_cells)) & set(cell_neighbors((x, y))))
             # living cell
             if v == "*":
                 # living cell with less than 2 or more than 3 neighbors dies
-                if len(live_neighbors) < 2 or live_neighbors > 3:
+                if len(live_neighbors) < 2 or len(live_neighbors) > 3:
                     v = "."
-
+                # dead cell spawns life with exactly 3 live neighbors
+            if v == ".":
+                if len(live_neighbors) == 3:
+                    v = "*"
             new_grid.add((x, y, v))
         self.grid = new_grid
 
