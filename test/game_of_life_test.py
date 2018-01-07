@@ -72,6 +72,15 @@ class TestGameOfLife(unittest.TestCase):
         game.evolve()
         assert game.grid == grid2
 
+    def test_boat(self):
+        # boat is a stable patter
+        infile = os.path.abspath("./game_of_life_test_input/boat.txt")
+        game = Game(infile)
+        temp_grid = game.grid
+        for i in range(1000):
+            game.evolve()
+            assert game.grid == temp_grid
+
 
 
 if __name__ == '__main__':
