@@ -13,5 +13,10 @@ class TestMinesweeper(unittest.TestCase):
         game = Game(infile)
         game.infile = infile
 
+    def test_get_raw_input(self):
+        infile = os.path.abspath('./minesweeper_test_input/one_field.txt')
+        game = Game(infile)
+        assert game.raw_input == ["."]
+
 if __name__ == '__main__':
     unittest.main()
