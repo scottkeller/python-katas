@@ -18,6 +18,11 @@ class TestGameOfLife(unittest.TestCase):
         game = Game(infile)
         assert game.raw_input[0] == "*"
 
+    def test_grid_creation(self):
+        infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
+        game = Game(infile)
+        assert game.grid == set()
+
 
 
 if __name__ == '__main__':
