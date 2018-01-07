@@ -45,6 +45,17 @@ class TestGameOfLife(unittest.TestCase):
         game.evolve()
         assert game.grid == set([(0, 0, '*'), (0, 1, '*'), (1, 0, '*'), (1, 1, '*')])
 
+    def test_grid_text(self):
+        from src.game_of_life import grid_text
+        infile = os.path.abspath("./game_of_life_test_input/one_dead_cell_life.txt")
+        file_text = ""
+        with open(infile, "r") as my_file:
+            file_text = my_file.read()
+        game = Game(infile)
+        assert file_text == grid_text(game.grid)
+
+
+
 
 
 

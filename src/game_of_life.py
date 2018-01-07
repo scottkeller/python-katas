@@ -5,6 +5,10 @@ class Game(object):
         self.grid = create_grid(self.raw_input)
         self.live_cells = live_cells(self.grid)
 
+    def show_grid(self):
+        print(grid_text(self.grid))
+        print ""
+
     def evolve(self):
         new_grid = set()
         for cell in self.grid:
@@ -57,6 +61,24 @@ def cell_neighbors(cell):
     offset = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
     x, y = cell
     return [(x + ox, y + oy) for (ox, oy) in offset]
+
+
+def grid_text(grid):
+    sorted_grid = sorted(list(grid), key=lambda k: (k[1], k[0]))
+    grid_text = ""
+    prev_y = 0
+    for cell in sorted_grid:
+        x, y, v = cell
+        if y > prev_y:
+            grid_text += "\n"
+        grid_text += v
+        prev_y = y
+    return grid_text
+
+
+
+
+
 
 
 
