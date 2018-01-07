@@ -8,13 +8,15 @@ from src.game_of_life import Game
 
 class TestGameOfLife(unittest.TestCase):
 
-    def test_create_game(self):
-        game = Game(None)
+    def test_get_input_filename(self):
+        infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
+        game = Game(infile)
+        assert game.infile == infile
 
     def test_read_input_file(self):
         infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
         game = Game(infile)
-        assert game.infile == infile
+        assert game.raw_input[0] == "*"
 
 
 
