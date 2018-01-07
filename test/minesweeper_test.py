@@ -38,5 +38,13 @@ class TestMinesweeper(unittest.TestCase):
         game = Game(infile)
         assert game.hint() == set([(0, 0, '*'), (1, 0, 1)])
 
+    def test_4_4_grid_2_mines(self):
+        infile = os.path.abspath('./minesweeper_test_input/4_4_grid_2_mines.txt')
+        game = Game(infile)
+        assert game.hint() == set([(0, 0, '*'), (1, 0, 1), (2, 0, 0), (3, 0, 0),
+                                   (0, 1, 2), (1, 1, 2), (2, 1, 1), (3, 1, 0),
+                                   (0, 2, 1), (1, 2, '*'), (2, 2, 1), (3, 2, 0),
+                                   (0, 3, 1), (1, 3, 1), (2, 3, 1), (3, 3, 0)])
+
 if __name__ == '__main__':
     unittest.main()
