@@ -6,6 +6,7 @@ import os.path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from src.game_of_life import Game
 
+
 class TestGameOfLife(unittest.TestCase):
 
     def test_get_input_filename(self):
@@ -54,6 +55,7 @@ class TestGameOfLife(unittest.TestCase):
         assert file_text == grid_text(game.grid)
 
     def test_blinker(self):
+        # blinker changes back and forth each evolution
         infile = os.path.abspath("./game_of_life_test_input/blinker.txt")
         game = Game(infile)
         grid1 = set([(0, 0, "."), (1, 0, "."), (2, 0, "."),
@@ -73,7 +75,7 @@ class TestGameOfLife(unittest.TestCase):
         assert game.grid == grid2
 
     def test_boat(self):
-        # boat is a stable patter
+        # boat is a stable pattern
         infile = os.path.abspath("./game_of_life_test_input/boat.txt")
         game = Game(infile)
         temp_grid = game.grid
@@ -81,6 +83,13 @@ class TestGameOfLife(unittest.TestCase):
             game.evolve()
             assert game.grid == temp_grid
 
+    def test_extinction(self):
+        # pattern will end in extinction after 2 evolutions
+        infile = os.path.abspath("./game_of_life_test_input/extinction.txt")
+        game = Game(infile)
+        game.evolve()
+        game.evolve()
+        assert game.live_cells == []
 
 
 if __name__ == '__main__':
