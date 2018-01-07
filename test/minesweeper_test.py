@@ -33,5 +33,10 @@ class TestMinesweeper(unittest.TestCase):
         neighbors = cell_neighbors((0, 0))
         assert neighbors == [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
 
+    def test_hint_count(self):
+        infile = os.path.abspath('./minesweeper_test_input/one_mine.txt')
+        game = Game(infile)
+        assert game.hint() == set([(0, 0, '*'), (1, 0, 1)])
+
 if __name__ == '__main__':
     unittest.main()

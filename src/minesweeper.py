@@ -12,6 +12,17 @@ class Game(object):
         self.grid = create_grid(self.raw_input)
         self.mines = find_mines(self.grid)
 
+    def hint(self):
+        """shows grid with numbers indicating neighboring mines"""
+        hint_grid = set()
+        for cell in self.grid:
+            x, y, v = cell
+            mine_neighbors = list((set(self.mines)) & set(cell_neighbors((x, y))))
+            if v == ".":
+                v = len(mine_neighbors)
+            hint_grid.add((x, y, v))
+        return hint_grid
+
 
 def file_helper(infile):
     """returns input file as list of lines"""
