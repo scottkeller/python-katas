@@ -28,5 +28,10 @@ class TestMinesweeper(unittest.TestCase):
         game = Game(infile)
         assert game.mines == [(0, 0)]
 
+    def test_cell_neighbors(self):
+        from src.minesweeper import cell_neighbors
+        neighbors = cell_neighbors((0, 0))
+        assert neighbors == [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+
 if __name__ == '__main__':
     unittest.main()

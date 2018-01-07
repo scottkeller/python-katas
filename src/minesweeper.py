@@ -44,3 +44,10 @@ def create_grid(lines):
 def find_mines(grid):
     """finds the x,y coordinates of mines in the grid"""
     return [(x[0], x[1]) for x in grid if x[2] == '*']
+
+
+def cell_neighbors(cell):
+    """finds the neighboring cells"""
+    offset = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+    x, y = cell
+    return [(x + ox, y + oy) for (ox, oy) in offset]
