@@ -61,5 +61,15 @@ class TestMinesweeper(unittest.TestCase):
                                    (0, 1, 3), (1, 1, 3), (2, 1, 2), (3, 1, 0), (4, 1, 0),
                                    (0, 2, 1), (1, 2, '*'), (2, 2, 1), (3, 2, 0), (4, 2, 0)])
 
+    def test_show_grid(self):
+        infile = os.path.abspath('./minesweeper_test_input/4_4_grid_2_mines.txt')
+        game = Game(infile)
+        game.show_grid()
+        game.show_hint()
+        infile = os.path.abspath('./minesweeper_test_input/3_5_grid_3_mines.txt')
+        game = Game(infile)
+        game.show_grid()
+        game.show_hint()
+
 if __name__ == '__main__':
     unittest.main()

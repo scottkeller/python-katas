@@ -23,6 +23,16 @@ class Game(object):
             hint_grid.add((x, y, v))
         return hint_grid
 
+    def show_hint(self):
+        """prints the hint grid's text representation"""
+        print grid_text(self.hint())
+        print ""
+
+    def show_grid(self):
+        """prints the input grid's text representation"""
+        print grid_text(self.grid)
+        print ""
+
 
 def file_helper(infile):
     """returns input file as list of lines"""
