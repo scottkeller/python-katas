@@ -48,15 +48,29 @@ class TestGameOfLife(unittest.TestCase):
     def test_grid_text(self):
         from src.game_of_life import grid_text
         infile = os.path.abspath("./game_of_life_test_input/one_dead_cell_life.txt")
-        file_text = ""
         with open(infile, "r") as my_file:
             file_text = my_file.read()
         game = Game(infile)
         assert file_text == grid_text(game.grid)
 
+    def test_blinker(self):
+        infile = os.path.abspath("./game_of_life_test_input/blinker.txt")
+        game = Game(infile)
+        grid1 = set([(0, 0, "."), (1, 0, "."), (2, 0, "."),
+                     (0, 1, "*"), (1, 1, "*"), (2, 1, "*"),
+                     (0, 2, "."), (1, 2, "."), (2, 2, ".")])
 
+        grid2 = set([(0, 0, "."), (1, 0, "*"), (2, 0, "."),
+                     (0, 1, "."), (1, 1, "*"), (2, 1, "."),
+                     (0, 2, "."), (1, 2, "*"), (2, 2, ".")])
 
-
+        assert game.grid == grid1
+        game.evolve()
+        assert game.grid == grid2
+        game.evolve()
+        assert game.grid == grid1
+        game.evolve()
+        assert game.grid == grid2
 
 
 

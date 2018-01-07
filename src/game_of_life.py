@@ -25,6 +25,7 @@ class Game(object):
                     v = "*"
             new_grid.add((x, y, v))
         self.grid = new_grid
+        self.live_cells = live_cells(self.grid)
 
 
 def file_helper(infile):
