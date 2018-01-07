@@ -31,8 +31,14 @@ class TestGameOfLife(unittest.TestCase):
     def test_cell_neighbors_point_of_origin(self):
         from src.game_of_life import cell_neighbors
         neighbors = cell_neighbors((0, 0))
-        assert len(neighbors) == 8
         assert neighbors == [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+
+    def test_one_live_cell_death(self):
+        infile = os.path.abspath("./game_of_life_test_input/one_live_cell.txt")
+        game = Game(infile)
+        game.evolve()
+        assert game.grid == set([(0, 0, '.')])
+
 
 
 

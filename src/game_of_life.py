@@ -5,6 +5,21 @@ class Game(object):
         self.grid = create_grid(self.raw_input)
         self.live_cells = live_cells(self.grid)
 
+    def evolve(self):
+        new_grid = set()
+        for cell in self.grid:
+            x, y, v = cell
+            live_neighbors = list(set(self.live_cells) - set(cell_neighbors((x, y))))
+            # living cell
+            if v == "*":
+                # living cell with less than 2 or more than 3 neighbors dies
+                if len(live_neighbors) < 2 or live_neighbors > 3:
+                    v = "."
+
+            new_grid.add((x, y, v))
+        self.grid = new_grid
+
+
 def file_helper(infile):
     my_infile = open(infile, "r")
     lines = my_infile.readlines()
