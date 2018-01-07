@@ -8,8 +8,10 @@ from src.minesweeper import Game
 
 
 class TestMinesweeper(unittest.TestCase):
-    def test_create_game(self):
-        game = Game()
+    def test_get_input_filename(self):
+        infile = os.path.abspath('./minesweeper_test_input/one_field.txt')
+        game = Game(infile)
+        game.infile = infile
 
 if __name__ == '__main__':
     unittest.main()

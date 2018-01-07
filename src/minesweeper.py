@@ -6,5 +6,5 @@ Program can hypothetically process an infinite size grid"""
 
 class Game(object):
     """base game class"""
-    def __init__(self):
-        pass
+    def __init__(self, infile):
+        self.infile = infile
