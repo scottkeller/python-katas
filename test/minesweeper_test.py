@@ -38,6 +38,14 @@ class TestMinesweeper(unittest.TestCase):
         game = Game(infile)
         assert game.hint() == set([(0, 0, '*'), (1, 0, 1)])
 
+    def test_grid_text(self):
+        from src.minesweeper import grid_text
+        infile = os.path.abspath("./minesweeper_test_input/4_4_grid_2_mines.txt")
+        with open(infile, "r") as my_file:
+            file_text = my_file.read()
+        game = Game(infile)
+        assert file_text == grid_text(game.grid)
+
     def test_4_4_grid_2_mines(self):
         infile = os.path.abspath('./minesweeper_test_input/4_4_grid_2_mines.txt')
         game = Game(infile)

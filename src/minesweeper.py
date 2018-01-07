@@ -62,3 +62,17 @@ def cell_neighbors(cell):
     offset = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
     x, y = cell
     return [(x + ox, y + oy) for (ox, oy) in offset]
+
+
+def grid_text(grid):
+    """converts grid to text representation"""
+    sorted_grid = sorted(list(grid), key=lambda k: (k[1], k[0]))
+    text = ""
+    prev_y = 0
+    for cell in sorted_grid:
+        x, y, v = cell
+        if y > prev_y:
+            text += "\n"
+        text += str(v)
+        prev_y = y
+    return text
