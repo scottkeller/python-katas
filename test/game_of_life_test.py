@@ -28,7 +28,12 @@ class TestGameOfLife(unittest.TestCase):
         game = Game(infile)
         assert game.live_cells == [(0, 0)]
 
-    ##def test_cell_state(self):
+    def test_cell_neighbors_point_of_origin(self):
+        from src.game_of_life import cell_neighbors
+        neighbors = cell_neighbors((0, 0))
+        assert len(neighbors) == 8
+        assert neighbors == [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+
 
 
 
