@@ -25,11 +25,13 @@ class Game(object):
 
     def show_hint(self):
         """prints the hint grid's text representation"""
+        print ''
         print grid_text(self.hint())
         print ''
 
     def show_grid(self):
         """prints the input grid's text representation"""
+        print ''
         print grid_text(self.grid)
         print ''
 
