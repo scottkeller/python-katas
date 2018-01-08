@@ -22,14 +22,14 @@ class Game(object):
             x, y, v = cell
             live_neighbors = list((set(self.live_cells)) & set(cell_neighbors((x, y))))
             # living cell
-            if v == "*":
+            if v == '*':
                 # living cell with less than 2 or more than 3 neighbors dies
                 if len(live_neighbors) < 2 or len(live_neighbors) > 3:
-                    v = "."
+                    v = '.'
                 # dead cell spawns life with exactly 3 live neighbors
-            if v == ".":
+            if v == '.':
                 if len(live_neighbors) == 3:
-                    v = "*"
+                    v = '*'
             new_grid.add((x, y, v))
         self.grid = new_grid
         self.live_cells = live_cells(self.grid)
@@ -37,7 +37,7 @@ class Game(object):
 
 def file_helper(infile):
     """reads a file in as lines"""
-    my_infile = open(infile, "r")
+    my_infile = open(infile, 'r')
     lines = my_infile.readlines()
     my_infile.close()
     return lines
@@ -67,7 +67,7 @@ def create_grid(lines):
 
 def live_cells(grid):
     """returns cells on a grid are alive"""
-    return [(x[0], x[1]) for x in grid if x[2] == "*"]
+    return [(x[0], x[1]) for x in grid if x[2] == '*']
 
 
 def cell_neighbors(cell):
@@ -80,12 +80,12 @@ def cell_neighbors(cell):
 def grid_text(grid):
     """converts grid to text representation"""
     sorted_grid = sorted(list(grid), key=lambda k: (k[1], k[0]))
-    text = ""
+    text = ''
     prev_y = 0
     for cell in sorted_grid:
         x, y, v = cell
         if y > prev_y:
-            text += "\n"
+            text += '\n'
         text += v
         prev_y = y
     return text

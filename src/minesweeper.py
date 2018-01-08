@@ -18,7 +18,7 @@ class Game(object):
         for cell in self.grid:
             x, y, v = cell
             mine_neighbors = list((set(self.mines)) & set(cell_neighbors((x, y))))
-            if v == ".":
+            if v == '.':
                 v = len(mine_neighbors)
             hint_grid.add((x, y, v))
         return hint_grid
@@ -26,17 +26,17 @@ class Game(object):
     def show_hint(self):
         """prints the hint grid's text representation"""
         print grid_text(self.hint())
-        print ""
+        print ''
 
     def show_grid(self):
         """prints the input grid's text representation"""
         print grid_text(self.grid)
-        print ""
+        print ''
 
 
 def file_helper(infile):
     """returns input file as list of lines"""
-    with open(infile, "r") as my_file:
+    with open(infile, 'r') as my_file:
         lines = my_file.readlines()
     return lines
 
@@ -77,12 +77,12 @@ def cell_neighbors(cell):
 def grid_text(grid):
     """converts grid to text representation"""
     sorted_grid = sorted(list(grid), key=lambda k: (k[1], k[0]))
-    text = ""
+    text = ''
     prev_y = 0
     for cell in sorted_grid:
         x, y, v = cell
         if y > prev_y:
-            text += "\n"
+            text += '\n'
         text += str(v)
         prev_y = y
     return text
